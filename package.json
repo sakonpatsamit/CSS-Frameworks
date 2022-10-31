@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/sakonpatsamit/css-frameworks/issues"
   },
-  "homepage": "https://github.com/sakonpatsamit/css-frameworks#readme"
+  "homepage": "https://github.com/sakonpatsamit/css-frameworks#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.2"
+  },
+  "devDependencies": {
+    "sass": "^1.55.0"
+  }
 }
