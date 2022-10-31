@@ -1,0 +1,24 @@
+{
+  "name": "css-frameworks",
+  "version": "0.0.1",
+  "description": "A social media application written with Bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakonpatsamit/css-frameworks.git"
+  },
+  "keywords": [
+    "css",
+    "frameworks",
+    "bootstrap"
+  ],
+  "author": "Sakon Patsamit <sakonpatsamit@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakonpatsamit/css-frameworks/issues"
+  },
+  "homepage": "https://github.com/sakonpatsamit/css-frameworks#readme"
+}
