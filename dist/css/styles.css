@@ -1,10 +1,4 @@
 @charset "UTF-8";
-.profile-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-}
-
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -21548,6 +21542,11 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.profile-img {
+  max-width: 150px;
+  height: 150px;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=styles.css.map */
