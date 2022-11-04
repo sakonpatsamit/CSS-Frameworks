@@ -13,8 +13,10 @@ $green: #d8eabd;
 $teal: #20c997;
 $cyan: #0dcaf0;
 
-.background {
-  background-color: #d8eabd;
-}
+$btn-border-radius: 5px;
+$btn-border-radius-sm: 5px;
+$btn-border-radius-lg: 5px;
+
+$card-border-color: #212529;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
