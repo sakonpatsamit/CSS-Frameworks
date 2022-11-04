@@ -8,112 +8,116 @@
     <title>Profile page - ComeHang</title>
   </head>
   <body class="bg-success">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-          <h1 class="mt-2">ComeHang</h1>
-        </div>
-        <div class="col-12 col-md-6">
-          <nav
-            class="d-flex flex-column align-items-center d-md-flex flex-md-row justify-content-md-center nav"
-          >
-            <a class="nav-link" href="home.html">Home</a>
-            <a class="nav-link" href="index.html">Login</a>
-            <a class="nav-link" href="profile.html">Profile</a>
-          </nav>
-        </div>
-        <div class="col-12 col-md-6">
-          <form class="d-flex justify-content-center" role="search">
-            <input
-              class="form-control me-2 mt-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-primary mt-2">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="container d-flex justify-content-center mt-5">
-    <div class="card" style="width: 18rem;">
-        <img src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg" class="profile-img rounded-circle align-self-center pt-2" alt="anime-painting">
-        <div class="card-body">
-          <h2 class="text-center">Hokage223</h2>
-          <div>
-            <textarea
-              id="post"
-              class="form-control post-input shadow"
-              placeholder="What's on your mind?"
-              required
-              minlength="2"
-            ></textarea>
-            <button
-              type="submit"
-              class="btn btn-primary mt-4 mb-3 px-10 text-center"
-            >
-              Post
-            </button>
+    <header>
+        <div class="container">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <h1 class="mt-2">ComeHang</h1>
+              </div>
+              <div class="col-12 col-md-6">
+                <nav
+                  class="d-flex flex-column align-items-center d-md-flex flex-md-row justify-content-md-center nav"
+                >
+                  <a class="nav-link" href="home.html">Home</a>
+                  <a class="nav-link" href="index.html">Login</a>
+                  <a class="nav-link" href="profile.html">Profile</a>
+                </nav>
+              </div>
+              <div class="col-12 col-md-6">
+                <form class="d-flex justify-content-center" role="search">
+                  <input
+                    class="form-control me-2 mt-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-primary mt-2">Search</button>
+                </form>
+              </div>
+            </div>
           </div>
+    </header>
+     <main>
+        <div class="container d-flex justify-content-center mt-5">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg" class="profile-img rounded-circle align-self-center pt-2" alt="anime-painting">
+                <div class="card-body">
+                  <h2 class="text-center">Hokage223</h2>
+                  <div>
+                    <textarea
+                      id="post"
+                      class="form-control post-input shadow"
+                      placeholder="What's on your mind?"
+                      required
+                      minlength="2"
+                    ></textarea>
+                    <button
+                      type="submit"
+                      class="btn btn-primary mt-4 mb-3 px-10 text-center"
+                    >
+                      Post
+                    </button>
+                  </div>
+                </div>
+              </form>
+              </div>
+            </div>
         </div>
-      </form>
-      </div>
-    </div>
-</div>
-
-<div class="container px-5 py-5">
-    <div class="row">
-    <div class="col col-md-6">
-        <div class="card px-4 py-4 h-100">
-        <h3>About</h3>
-        <p>Developer student from Norway</p>
-        <button class="mb-3 btn btn-primary">Edit</button>
-    </div>
-    </div>
-    <div class="col col-md-6">
-        <div class="card py-4 px-4 h-100">
-        <h4 class="px-2">Contacts</h4>
-        <ul class="list-group">
-            <li class="list-group-item">Sasuke235</li>
-            <li class="list-group-item">Itachi339</li>
-        </ul>
-    </div>
-    </div>
-</div>
-</div>
-<h3 class="text-center my-5">Your recent posts</h3>
-<div class="container d-flex flex-column d-md-flex flex-md-row justify-content-md-around my-4">
-   <div class="card my-3">
-   <div class="col-6 d-flex px-3 py-3">
-    <img class="profile-img rounded-circle mt-3 ms-2" src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg">
-    <div class="col d-flex align-items-center m-3">
-        <h3>Hokage223</h3>
-    </div>
-      
-   </div>
-   <p class="text-center ps-5">I miss my cat..</p>
-   <div class="col d-flex justify-content-end my-3">
-    <button class="btn mx-3 btn-secondary btn-sm">Like</button>
-    <button class="btn btn-secondary me-2 btn-sm">Comment</button>
-   </div>
-  
-</div>
-<div class="card my-3">
-    <div class="col-6 d-flex px-3 py-3">
-     <img class="profile-img rounded-circle mt-3 ms-2" src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg">
-     <div class="col d-flex align-items-center m-3">
-         <h3>Hokage223</h3>
-     </div>
-       
-    </div>
-    <p class="text-center ps-5">I am hungry..</p>
-    <div class="col d-flex justify-content-end my-3">
-     <button class="btn mx-3 btn-secondary btn-sm">Like</button>
-     <button class="btn btn-secondary me-2 btn-sm">Comment</button>
-    </div>
-   
- </div>
-</div>
+        
+        <div class="container px-5 py-5">
+            <div class="row">
+            <div class="col col-md-6">
+                <div class="card px-4 py-4 h-100">
+                <h3>About</h3>
+                <p>Developer student from Norway</p>
+                <button class="mb-3 btn btn-primary">Edit</button>
+            </div>
+            </div>
+            <div class="col col-md-6">
+                <div class="card py-4 px-4 h-100">
+                <h4 class="px-2">Contacts</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">Sasuke235</li>
+                    <li class="list-group-item">Itachi339</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+        <h3 class="text-center my-5">Your recent posts</h3>
+        <div class="container d-flex flex-column d-md-flex flex-md-row justify-content-md-around my-4">
+           <div class="card my-3">
+           <div class="col-6 d-flex px-3 py-3">
+            <img class="profile-img rounded-circle mt-3 ms-2" src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg">
+            <div class="col d-flex align-items-center m-3">
+                <h3>Hokage223</h3>
+            </div>
+              
+           </div>
+           <p class="text-center ps-5">I miss my cat..</p>
+           <div class="col d-flex justify-content-end my-3">
+            <button class="btn mx-3 btn-secondary btn-sm">Like</button>
+            <button class="btn btn-secondary me-2 btn-sm">Comment</button>
+           </div>
+          
+        </div>
+        <div class="card my-3">
+            <div class="col-6 d-flex px-3 py-3">
+             <img class="profile-img rounded-circle mt-3 ms-2" src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg">
+             <div class="col d-flex align-items-center m-3">
+                 <h3>Hokage223</h3>
+             </div>
+               
+            </div>
+            <p class="text-center ps-5">I am hungry..</p>
+            <div class="col d-flex justify-content-end my-3">
+             <button class="btn mx-3 btn-secondary btn-sm">Like</button>
+             <button class="btn btn-secondary me-2 btn-sm">Comment</button>
+            </div>
+           
+         </div>
+        </div>
+     </main>
 <footer class="bg-dark text-light text-center">@sakonpatsamit</footer>
   </body>
 </html>

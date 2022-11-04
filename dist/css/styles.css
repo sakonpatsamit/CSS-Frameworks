@@ -21544,8 +21544,8 @@ textarea.form-control-lg {
   }
 }
 .profile-img {
-  max-width: 150px;
-  height: 150px;
+  max-width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
