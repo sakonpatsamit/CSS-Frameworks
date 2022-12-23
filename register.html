@@ -7,18 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-<form>
-    <label for="name">
+<form id="registerForm">
+    <label for="userName">
      Username:
     </label>
-    <input id="name" for="name"/>
-    <label for="email">
+    <input id="userName" for="userName"/>
+    <label for="userEmail">
         Email:
     </label>
-    <input id="email" for="email"/>
-    <label for="password">Password:</label>
-    <input id="password" for="password"/>
-    <button>Submit</button>
+    <input id="userEmail" for="userEmail"/>
+    <label for="userPassword">Password:</label>
+    <input id="userPassword" for="userPassword"/>
+    <button id="registerBtn">Submit</button>
 </form>
 </body>
+<script type="module" src="/js/api/register.mjs"></script>
 </html>
