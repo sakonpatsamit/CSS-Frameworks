@@ -1,37 +1,6 @@
 import { API_AUTH_LOGIN } from "./constants.mjs";
+import { loginHandler } from "./utils.mjs";
 
-
-export function loginHandler(loginEmail, loginPassword) {
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
-  email: loginEmail,
-  password: loginPassword
-});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
- 
-};
-
-fetch(`${API_AUTH_LOGIN}`, requestOptions)
-  .then(response => response.json())
-  .then(result => {
-  if (result.accessToken == undefined) {
-    alert(result.errors.message);
-    return;
-  }
-  const token = result.accessToken;
-  const userName = result.name
-  localStorage.setItem("token", accessId);
-  localStorage.setItem("username", userName);
-  document.location = "./home.html";
-  })
-  .catch(error => console.log('error', error));
-}
 
 export function loginInit(event) {
     event.preventDefault();
@@ -45,3 +14,11 @@ export function loginInit(event) {
     loginHandler(loginEmail, loginPassword);
 }
 
+function loginForm () {
+ const loginBtn = document.querySelector("#loginForm");
+ if (loginBtn) {
+  loginBtn.addEventListener("submit", loginInit);
+ } 
+}
+
+loginForm();
