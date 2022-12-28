@@ -1,5 +1,8 @@
 
 import { API_REGISTER_URL } from "./constants.mjs";
+import { loginHandler } from "./utils.mjs";
+
+
 
 function registerUser(event) {
     event.preventDefault();
@@ -24,14 +27,20 @@ var requestOptions = {
 
 fetch(`${API_REGISTER_URL}`, requestOptions)
   .then(response => response.json())
-  .then(result => console.log(result))
+  .then(result => {
+    if (result.message) {
+      alert(result.message);
+      return
+    }
+    loginHandler(result.email, newPassword);
+  })
   .catch(error => console.log('error', error));
 } 
 
 const registerForm = document.querySelector("#registerForm")
 if (registerForm) {
     registerForm.addEventListener("submit", registerUser)
-    console.log(registerUser)
+   
 } 
 
     

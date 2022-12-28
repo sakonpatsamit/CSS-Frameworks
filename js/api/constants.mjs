@@ -8,3 +8,8 @@ export const API_REGISTER_URL = `${API_SOCIAL_URL}${API_AUTH_REGISTER}`
 
 export const API_LOGIN = "/auth/login"
 export const API_AUTH_LOGIN = `${API_SOCIAL_URL}${API_LOGIN}`
+
+export const API_POST = "/posts"
+export const API_SOCIAL_POST = `${API_SOCIAL_URL}${API_POST}`
+
+export const POST_PARAM = "/?_author=true&_reactions=true&_comments=true";

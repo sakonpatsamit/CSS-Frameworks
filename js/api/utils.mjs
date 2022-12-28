@@ -1,4 +1,23 @@
 import { API_AUTH_LOGIN } from "./constants.mjs";
+
+const token = localStorage.getItem("token");
+const userName = localStorage.getItem("username");
+export let posts = [];
+
+const logoutBtn = document.querySelector("#logout-btn");
+if (token) {
+    logoutBtn.innerHTML = `<button id="logout" class="btn btn-danger">Logout</button>`;
+   
+    const logout = document.querySelector("#logout");
+    logout.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        document.location = "./index.html";
+    } )
+
+}
+
+
 export function loginHandler(loginEmail, loginPassword) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -32,3 +51,8 @@ export function loginHandler(loginEmail, loginPassword) {
       .catch(error => console.log('error', error));
     }
     
+    export function sortList(list) {
+      return [...list]
+      .sort((a, b) => new Date(b.created) - new Date(a.created))
+      .reverse();
+    }
