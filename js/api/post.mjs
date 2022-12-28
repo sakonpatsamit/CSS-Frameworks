@@ -5,8 +5,10 @@ const token = localStorage.getItem("token");
 const postContainer = document.querySelector("#post-container");
 
 export function displayMultiPosts(posts) {
+    postContainer.innerHTML ="";
+
  posts.forEach(function (getPosts) {
-    postContainer.innerHTML = `<div class="card my-3">
+    postContainer.innerHTML += `<div class="card my-3">
     <div class="col-6 d-flex px-3 py-3">
       <div class="col d-flex align-items-center m-3">
         <h3>${getPosts.title}</h3>
@@ -51,9 +53,9 @@ fetch(`${API_SOCIAL_POST}${POST_PARAM}`, requestOptions)
     console.log(result);
     let renderList;
     if (shouldSort) {
-        renderList = sortList(posts)
+        renderList = sortList(result)
     } else {
-        renderList = posts;
+        renderList = result;
     }
     displayMultiPosts(renderList);
   })
