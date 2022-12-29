@@ -6,6 +6,8 @@ const token = localStorage.getItem("token");
 const userName = localStorage.getItem("username");
 export let posts = [];
 
+
+
 export const sortPost = (newPosts) => {
     posts = newPosts;
 }
