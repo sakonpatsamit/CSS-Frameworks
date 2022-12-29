@@ -24,9 +24,10 @@
             </nav>
           </div>
           <div class="col-12 col-md-6">
-            <form class="d-flex justify-content-center" role="search">
+            <form class="d-flex justify-content-center" role="search" id="searchForm">
               <input
                 class="form-control me-2 mt-2"
+                id="searchBar"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -47,12 +48,7 @@
               src="/images/tim-mossholder-tq8Cuap8_wY-unsplash.jpg"
               class="rounded-circle profile-img"
             />
-            <h2 class="my-2">Hokage223</h2>
-            <button class="btn btn-primary w-25">Edit</button>
-            <div class="my-3">
-              <h3>Naruto Uzumaki</h3>
-              <p>I will be the next Hokage</p>
-            </div>
+            <h2 id="userId" class="my-2"></h2>
             <div>
               <textarea
                 id="post"
@@ -81,11 +77,11 @@
         <label for="newPosts" >new</label>
         <input type="radio" id="oldPosts" name="sortBy" value="old">
         <label for="oldPosts">old</label>
-        <button type="submit" class="btn btn-secondary"></button>
+        <button type="submit" class="btn btn-secondary">Sort</button>
       </form>
       <div
       id="post-container"
-        class="container d-flex flex-column d-md-flex flex-md-row justify-content-md-evenly my-4"
+        
       >
 
         </div>
