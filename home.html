@@ -24,7 +24,11 @@
             </nav>
           </div>
           <div class="col-12 col-md-6">
-            <form class="d-flex justify-content-center" role="search" id="searchForm">
+            <form
+              class="d-flex justify-content-center"
+              role="search"
+              id="searchForm"
+            >
               <input
                 class="form-control me-2 mt-2"
                 id="searchBar"
@@ -50,6 +54,7 @@
             />
             <h2 id="userId" class="my-2"></h2>
             <div>
+              <input type="text" id="post-title">
               <textarea
                 id="post"
                 class="form-control post-input shadow"
@@ -58,37 +63,31 @@
                 minlength="2"
               ></textarea>
               <button
-                type="submit"
+                id="createPostBtn"
+                type="button"
                 class="btn btn-primary mt-4 mb-3 px-10 text-center"
               >
                 Post
               </button>
             </div>
-            <div id="logout-btn">
-            </div>
+            <div id="logout-btn"></div>
           </div>
         </div>
       </div>
       <h4 class="text-center">Keep up with your friends!</h4>
-      
+
       <form role="form" id="sortDate">
         <p>Sort by</p>
-        <input type="radio" id="newPosts" name="sortBy" value="new">
-        <label for="newPosts" >new</label>
-        <input type="radio" id="oldPosts" name="sortBy" value="old">
+        <input type="radio" id="newPosts" name="sortBy" value="new" />
+        <label for="newPosts">new</label>
+        <input type="radio" id="oldPosts" name="sortBy" value="old" />
         <label for="oldPosts">old</label>
         <button type="submit" class="btn btn-secondary">Sort</button>
       </form>
-      <div
-      id="post-container"
-        
-      >
-
-        </div>
-        
+      <div id="post-container"></div>
     </main>
     <footer class="bg-dark text-light text-center">@sakonpatsamit</footer>
   </body>
   <script type="module" src="/js/api/utils.mjs"></script>
-  <script type="module" src="/js/api/post.mjs"></script>
+  <script type="module" src="/js/api/home.mjs"></script>
 </html>

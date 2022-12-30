@@ -1,104 +1,70 @@
-import { API_SOCIAL_POST, POST_PARAM } from "./constants.mjs"
-import { posts as fetchedPosts, sortList, sortPost, searchEvent  } from "./utils.mjs";
+import { getPostById } from "./api.mjs";
+
 const urlSearchParams = new URLSearchParams(window.location.search);
 const postId = urlSearchParams.get("post");
-let currentPost = [];
-const token = localStorage.getItem("token");
- const postContainer = document.querySelector("#post-container");
 
-let myHeaders = new Headers();
-myHeaders.append("Authorization", `Bearer ${token}`);
+let post = null;
 
-const requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+// Vise feilmelding om postId ikke finnes
 
-
-
-export function displayMultiPosts(posts) {
-    postContainer.innerHTML ="";
-    
-
- posts.forEach(function (getPosts) {
-    postContainer.innerHTML += `<div>
-    <div >
-    
-    <div>  <h2>${getPosts.author.name}</h2>
-      <div>
-      <a href="/spesificpost.html?post=${getPosts.id}"><h3>${getPosts.title}</h3></a> 
-      </div>
-    </div>
-    <p>${getPosts.body}</p>
-  </div>`
- })
-}
-
-
-
-
-
-
-function displaySinglePost (post) {
-    document.querySelector("#singlePost").innerHTML = `<div>
-    <div> <h2>${post.author.name}</h2> </div>
-    <div> <h3>${post.title}</h3> </div>
-    <div> <p>${post.body} </p> </div>`
-}
-
-fetch(`${API_SOCIAL_POST}/${postId}${POST_PARAM}`, requestOptions)
-  .then(response => response.json())
-  .then((result) => {
-    displaySinglePost(result);
-  })
-  .catch(error => console.log('error', error));
-
-
-
-const userId = localStorage.getItem("username");
-const nameContainer = document.querySelector("#userId");
-
-nameContainer.innerHTML = `${userId}`
-
-
-
-const sortForm = document.querySelector("#sortDate");
-const sortBtn = document.getElementsByName("sortBy");
-
-let shouldSort = false;
-sortForm.addEventListener("submit", (click) => {
-click.preventDefault();
-let posts = fetchedPosts;
-let renderList;
-if (!sortBtn[0].checked) {
-renderList = sortList(posts);
-} else {
-    renderList = posts;
-}
-postContainer.innerHTML = "";
-displayMultiPosts(renderList);
-} )
-
-fetch(`${API_SOCIAL_POST}${POST_PARAM}`, requestOptions)
-  .then(response => response.json())
-  .then((result) => {
-    sortPost(result);
-    let renderList;
-    if (shouldSort) {
-        renderList = sortList(result)
-        console.log(sortList);
+// Get single post
+function renderPost() {
+  getPostById(postId).then((result) => {
+    if (result) {
+      post = result;
+      displaySinglePost(result);
+      displayAuthorTools(result);
     } else {
-        renderList = result;
-        // console.log(renderList);
+      // Vise feilmelding om vi ikke få´r en post
     }
-    displayMultiPosts(renderList);
-  })
-  .catch(error => console.log('error', error));
-
-  
-const searchForm = document.querySelector("#searchForm");
-
-if(searchForm) {
-    searchForm.addEventListener("submit", searchEvent);
+  });
 }
+
+renderPost();
+
+// Display single post on page
+function displaySinglePost(post) {
+  if (post.title) {
+    document.querySelector("#singlePost").innerHTML = `<div>
+      <div> <h2>${post.author.name}</h2> </div>
+      <div> <h3>${post.title}</h3> </div>
+      <div> <p>${post.body} </p> </div>
+      `;
+  }
+}
+
+function displayAuthorTools(post) {
+  const currentUser = localStorage.getItem("username");
+
+  console.log(post);
+  if (post.author.name != currentUser) return;
+
+  const editBtn = document.createElement("button");
+  editBtn.innerText = "Edit";
+  document.querySelector("#singlePost").parentElement.appendChild(editBtn);
+
+  editBtn.addEventListener("click", showEdit);
+}
+
+function showEdit(event) {
+    console.log(event);
+  document.querySelector("#singlePost").innerHTML += `
+  <form>
+    <input type="text">
+    <textarea></textarea>
+  </form>
+  `;
+
+  const submitBtn = document.createElement("button");
+  submitBtn.innerText = "Save changes";
+  document.querySelector("#singlePost").appendChild(submitBtn);
+}
+
+// Submit knapp for editen
+// Send editPost() med id til posten du redigerer og endret tittel og tekst
+// Hvis du gjør det på´hjemmesiden må´du kalle renderPosts() på´nytt.
+// Hvis du gjør det på´post siden må´du kalle renderPost() på´nytt.
+
+// editPost(2041, "hey", "Ho").then(res => {
+//   console.log(res);
+// });
