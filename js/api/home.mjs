@@ -96,7 +96,6 @@ createPostBtn.addEventListener("click", () => {
       renderPosts();
     });
   } else {
-    // Bytt til å rendre feilmelding i html
     alert("Your title and content must be at least 3 characters long");
   }
 });
