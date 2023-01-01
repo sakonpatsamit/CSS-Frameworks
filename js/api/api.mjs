@@ -1,7 +1,6 @@
 import { API_SOCIAL_POST, POST_PARAM } from "./constants.mjs";
 
 const token = localStorage.getItem("token");
-
 let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 myHeaders.append("Content-Type", "application/json");
@@ -97,10 +96,12 @@ export function deletePost(_id) {
     .then((response) => response.json())
     .then((result) => {
       console.log(result);
-      return result;
+      return true;
     })
     .catch((error) => {
       console.log("error", error);
       return false;
     });
+
+    
 }

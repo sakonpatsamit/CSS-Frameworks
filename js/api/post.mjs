@@ -1,31 +1,39 @@
-import { getPostById } from "./api.mjs";
-
+import { editPost, deletePost, getPostById } from "./api.mjs";
 const urlSearchParams = new URLSearchParams(window.location.search);
 const postId = urlSearchParams.get("post");
 
+const postContainer = document.querySelector("#singlePost");
+const authorToolsContainer = document.querySelector("#author-tools");
+const alertContainer = document.querySelector("#alert");
+
 let post = null;
 
-// Vise feilmelding om postId ikke finnes
-
-// Get single post
 function renderPost() {
+
+  if (!postId) {
+    showAlert("Something went wrong", "We couldn't find the post you're looking for. Please try again.", "danger");
+    return;
+  }
+
   getPostById(postId).then((result) => {
-    if (result) {
+    if (result && result.id) {
       post = result;
       displaySinglePost(result);
       displayAuthorTools(result);
     } else {
-      // Vise feilmelding om vi ikke få´r en post
+      if (result.statusCode == 404) {
+        showAlert("Something went wrong", "The post you're looking for no longer exists. Please return to the previous page.", "danger");
+      }
     }
   });
 }
 
 renderPost();
 
-// Display single post on page
+
 function displaySinglePost(post) {
   if (post.title) {
-    document.querySelector("#singlePost").innerHTML = `<div>
+    postContainer.innerHTML = `<div>
       <div> <h2>${post.author.name}</h2> </div>
       <div> <h3>${post.title}</h3> </div>
       <div> <p>${post.body} </p> </div>
@@ -41,14 +49,34 @@ function displayAuthorTools(post) {
 
   const editBtn = document.createElement("button");
   editBtn.innerText = "Edit";
-  document.querySelector("#singlePost").parentElement.appendChild(editBtn);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "Delete";
+
+  authorToolsContainer.appendChild(editBtn);
+  authorToolsContainer.appendChild(deleteBtn);
 
   editBtn.addEventListener("click", showEdit);
+
+  deleteBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    deletePost(post.id).then((wasDeleted) => {
+      if (wasDeleted) {
+        postContainer.innerHTML = "";
+        authorToolsContainer.innerHTML = "";
+        showAlert(
+          "Success",
+          `The post was successfully deleted. Click <a href="./home.html">here</a> to return to the homepage.`
+        );
+      }
+    });
+  });
 }
 
 function showEdit(event) {
-    console.log(event);
-  document.querySelector("#singlePost").innerHTML += `
+  console.log(event);
+  authorToolsContainer.innerHTML += `
   <form>
     <input type="text">
     <textarea></textarea>
@@ -57,14 +85,37 @@ function showEdit(event) {
 
   const submitBtn = document.createElement("button");
   submitBtn.innerText = "Save changes";
-  document.querySelector("#singlePost").appendChild(submitBtn);
+  authorToolsContainer.appendChild(submitBtn);
+
+  submitBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const input = document.querySelector("input");
+    const textarea = document.querySelector("textarea");
+
+    const inputValue = input.value;
+    const textareaValue = textarea.value;
+
+    editPost(postId, inputValue, textareaValue).then((result) => {
+      if (result) {
+        authorToolsContainer.innerHTML = "";
+        showAlert(
+          "Success",
+          `The post was successfully edited. Click <a href="./home.html">here</a> to return to the homepage.`,
+          "success"
+        );
+        renderPost();
+      } else {
+        showAlert(
+          "Failed",
+          `The post couldn't be edited`,
+          "danger"
+        );
+      }
+    });
+  });
 }
 
-// Submit knapp for editen
-// Send editPost() med id til posten du redigerer og endret tittel og tekst
-// Hvis du gjør det på´hjemmesiden må´du kalle renderPosts() på´nytt.
-// Hvis du gjør det på´post siden må´du kalle renderPost() på´nytt.
-
-// editPost(2041, "hey", "Ho").then(res => {
-//   console.log(res);
-// });
+function showAlert(title, content, type = "info") {
+  alertContainer.innerHTML = `<div class="alert alert-${type}"><h4>${title}</h4><p>${content}</p></div>`;
+}

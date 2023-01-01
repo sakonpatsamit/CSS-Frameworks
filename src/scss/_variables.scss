@@ -21,3 +21,19 @@ $card-border-color: #212529;
 $card-bg: #fffff0;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+.info {
+    background-color: aqua;
+    color: black;
+  }
+  
+  .success {
+    background-color: green;
+    color: white;
+  }
+  
+  .error {
+    background-color: red;
+    color: white;
+  }
