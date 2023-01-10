@@ -52,12 +52,13 @@ export function loginHandler(loginEmail, loginPassword) {
         alert(result.errors.message);
         return;
       }
-      const token = result.accessToken;
-      const userName = result.name;
-      localStorage.setItem("token", token);
-      localStorage.setItem("username", userName);
-      console.log(token, userName);
-      document.location = "./home.html";
+
+      const { accessToken, name, ...profile } = result;
+
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem("username", name);
+      console.log(accessToken, name);
+      //document.location = "./home.html";
     })
     .catch((error) => console.log("error", error));
 }
