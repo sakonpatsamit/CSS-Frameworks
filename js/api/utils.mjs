@@ -34,12 +34,12 @@ export function loginHandler(loginEmail, loginPassword) {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  var raw = JSON.stringify({
+  const raw = JSON.stringify({
     email: loginEmail,
     password: loginPassword,
   });
 
-  var requestOptions = {
+  const requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: raw,
@@ -58,7 +58,7 @@ export function loginHandler(loginEmail, loginPassword) {
       localStorage.setItem("token", accessToken);
       localStorage.setItem("username", name);
       console.log(accessToken, name);
-      //document.location = "./home.html";
+      document.location = "./home.html";
     })
     .catch((error) => console.log("error", error));
 }

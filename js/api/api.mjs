@@ -44,7 +44,7 @@ export function getPostById(id) {
 }
 
 export function createPost(_title, _content) {
-  var postData = JSON.stringify({
+  const postData = JSON.stringify({
     title: _title,
     body: _content,
     tags: [],
@@ -69,7 +69,7 @@ export function createPost(_title, _content) {
 }
 
 export function editPost(_id, _title, _content) {
-  var postData = JSON.stringify({
+  const postData = JSON.stringify({
     title: _title,
     body: _content,
     tags: [],

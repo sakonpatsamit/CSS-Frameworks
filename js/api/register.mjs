@@ -13,16 +13,16 @@ function registerUser(event) {
     return;
   }
 
-  var myHeaders = new Headers();
+  const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  var raw = JSON.stringify({
+  const raw = JSON.stringify({
     name: newUser,
     email: newEmail,
     password: newPassword,
   });
 
-  var requestOptions = {
+  const requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: raw,
