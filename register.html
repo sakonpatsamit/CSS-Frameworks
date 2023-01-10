@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <form id="registerForm" class="container">
+      <div class="row d-flex flex-column align-items-center">
+        <div class="col-8">
+          <label for="userName" class="d-block"> Username: </label>
+          <input id="userName" for="userName" />
+        </div>
+
+        <div class="col-8">
+          <label for="userEmail" class="d-block"> Email: </label>
+          <input
+            required
+            title="password must contain atleast 7 letters"
+            id="userEmail"
+            for="userEmail"
+          />
+        </div>
+
+        <div class="col-8">
+          <label for="userPassword" class="d-block">Password:</label>
+          <input id="userPassword" for="userPassword" />
+        </div>
+
+        <div class="col-8">
+          <button id="registerBtn">Submit</button>
+        </div>
+      </div>
+    </form>
+  </body>
+  <script type="module" src="/js/api/register.mjs"></script>
+</html>

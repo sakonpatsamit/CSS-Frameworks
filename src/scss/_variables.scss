@@ -1,0 +1,39 @@
+$gray-900: #212529;
+
+$primary: $gray-900;
+
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #d8eabd;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$btn-border-radius: 5px;
+$btn-border-radius-sm: 5px;
+$btn-border-radius-lg: 5px;
+
+$card-border-color: #212529;
+$card-bg: #fffff0;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+.info {
+    background-color: aqua;
+    color: black;
+  }
+  
+  .success {
+    background-color: green;
+    color: white;
+  }
+  
+  .error {
+    background-color: red;
+    color: white;
+  }
