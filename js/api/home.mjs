@@ -40,6 +40,11 @@ function renderPosts() {
 
 renderPosts();
 
+/**
+ * goes through the posts and renders it as a HTML in the DOM
+ * @param {any} posts An array of JSON objects, each representing a single post
+ */
+
 export function displayMultiPosts(posts) {
   postContainer.innerHTML = "";
 
@@ -56,6 +61,11 @@ export function displayMultiPosts(posts) {
   });
 }
 
+/**
+ * rerenders the page to show posts where title, body or author name contains search query in searchbar
+ *
+ * @param {any} event passing the event from the event listener
+ */
 export function searchEvent(event) {
   event.preventDefault();
 

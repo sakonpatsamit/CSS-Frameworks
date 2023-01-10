@@ -1,46 +1,48 @@
-
 import { API_REGISTER_URL } from "./constants.mjs";
 import { loginHandler } from "./utils.mjs";
 
-
-
 function registerUser(event) {
-    event.preventDefault();
-    const newUser = document.querySelector("#userName").value
-    const newEmail = document.querySelector("#userEmail").value
-    const newPassword = document.querySelector("#userPassword").value
+  event.preventDefault();
+  const emailPattern = /^([a-zA-Z0-9]+@(noroff.no|stud.noroff.no))$/;
+  const newUser = document.querySelector("#userName").value;
+  const newEmail = document.querySelector("#userEmail").value;
+  const newPassword = document.querySelector("#userPassword").value;
 
-    var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+  if (!emailPattern.test(newEmail)) {
+    alert("Please enter an email with either .noroff or stud.noroff.no");
+    return;
+  }
 
-var raw = JSON.stringify({
-  name: newUser,
-  email: newEmail,
-  password: newPassword
-});
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-};
+  const raw = JSON.stringify({
+    name: newUser,
+    email: newEmail,
+    password: newPassword,
+  });
 
-fetch(`${API_REGISTER_URL}`, requestOptions)
-  .then(response => response.json())
-  .then(result => {
-    if (result.message) {
-      alert(result.message);
-      return
-    }
-    loginHandler(result.email, newPassword);
-  })
-  .catch(error => console.log('error', error));
-} 
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+  };
 
-const registerForm = document.querySelector("#registerForm")
+  fetch(`${API_REGISTER_URL}`, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+      if (result.message) {
+        alert(result.message);
+        return;
+      }
+      const { email } = result;
+      loginHandler(email, newPassword);
+    })
+    .catch((error) => console.log("error", error));
+}
+
+const registerForm = document.querySelector("#registerForm");
 if (registerForm) {
-    registerForm.addEventListener("submit", registerUser)
-   
-} 
-
-    
+  registerForm.addEventListener("submit", registerUser);
+}

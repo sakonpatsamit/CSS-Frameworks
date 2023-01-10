@@ -8,11 +8,19 @@ const alertContainer = document.querySelector("#alert");
 
 let post = null;
 
-function renderPost() {
+/**
+ *sends an API request, renders a single post, renders author tools if the post is written by the logged in user
+ * @returns {boolean} false if the postId is null
+ */
 
+function renderPost() {
   if (!postId) {
-    showAlert("Something went wrong", "We couldn't find the post you're looking for. Please try again.", "danger");
-    return;
+    showAlert(
+      "Something went wrong",
+      "We couldn't find the post you're looking for. Please try again.",
+      "danger"
+    );
+    return false;
   }
 
   getPostById(postId).then((result) => {
@@ -22,14 +30,17 @@ function renderPost() {
       displayAuthorTools(result);
     } else {
       if (result.statusCode == 404) {
-        showAlert("Something went wrong", "The post you're looking for no longer exists. Please return to the previous page.", "danger");
+        showAlert(
+          "Something went wrong",
+          "The post you're looking for no longer exists. Please return to the previous page.",
+          "danger"
+        );
       }
     }
   });
 }
 
 renderPost();
-
 
 function displaySinglePost(post) {
   if (post.title) {
@@ -106,11 +117,7 @@ function showEdit(event) {
         );
         renderPost();
       } else {
-        showAlert(
-          "Failed",
-          `The post couldn't be edited`,
-          "danger"
-        );
+        showAlert("Failed", `The post couldn't be edited`, "danger");
       }
     });
   });

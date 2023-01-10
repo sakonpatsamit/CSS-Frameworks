@@ -5,6 +5,12 @@ let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 myHeaders.append("Content-Type", "application/json");
 
+/**
+ * Fetches the post API, turns the respons into a json object
+ * @returns {boolean} returns false if the API call fails
+ * @returns {Object} a JSON object with an array of posts
+ */
+
 export function getPosts() {
   return fetch(`${API_SOCIAL_POST}${POST_PARAM}`, {
     method: "GET",
@@ -38,7 +44,7 @@ export function getPostById(id) {
 }
 
 export function createPost(_title, _content) {
-  var postData = JSON.stringify({
+  const postData = JSON.stringify({
     title: _title,
     body: _content,
     tags: [],
@@ -63,7 +69,7 @@ export function createPost(_title, _content) {
 }
 
 export function editPost(_id, _title, _content) {
-  var postData = JSON.stringify({
+  const postData = JSON.stringify({
     title: _title,
     body: _content,
     tags: [],
@@ -102,6 +108,4 @@ export function deletePost(_id) {
       console.log("error", error);
       return false;
     });
-
-    
 }
